@@ -53,7 +53,7 @@ const Bigrocksttngscrn = () => {
 
   const _sh$ = async () => {
     Linking.openURL(
-      'https://apps.apple.com/us/app/blgrook-joke-and-bas%D0%B7/id6758392672',
+      'https://apps.apple.com/us/app/%D0%B2lgr%D0%BE%D0%BEk-j0k%D0%B7-%D0%B0nd-b%D0%B0s%D0%B5/id6758626360',
     );
   };
 
