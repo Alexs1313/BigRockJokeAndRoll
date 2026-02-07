@@ -6,7 +6,11 @@ export const useStore = () => {
   return useContext(StoreContext);
 };
 
-export const ContextProvider = ({ children }) => {
+export const ContextProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [bigRockBgMusic, setBigRockBgMusic] = useState(false);
   const [bigRockVibration, setBigRockVibration] = useState(false);
 

@@ -1,10 +1,10 @@
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Bigrocktbs from './Bigrocktbs';
-import Bigrockwlcm from '../_0sxRckscrns/Bigrockwlcm';
-import Bigrockstrdtlscrn from '../_0sxRckscrns/Bigrockstrdtlscrn';
-import Bigrockjokesscrn from '../_0sxRckscrns/Bigrockjokesscrn';
-import Bigrocksvddtlscrn from '../_0sxRckscrns/Bigrocksvddtlscrn';
+import Bigrockwlcm from '../screens/Bigrockwlcm';
+import Bigrockstrdtlscrn from '../screens/Bigrockstrdtlscrn';
+import Bigrockjokesscrn from '../screens/Bigrockjokesscrn';
+import Bigrocksvddtlscrn from '../screens/Bigrocksvddtlscrn';
 
 const Stack = createStackNavigator();
 

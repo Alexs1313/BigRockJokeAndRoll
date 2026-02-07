@@ -1,25 +1,37 @@
-import { useNavigation as _uNavQm9LxA7ZrT2 } from '@react-navigation/native';
-import React, { useMemo as _uMmX7pQ9LmAz } from 'react';
+import React, { useMemo } from 'react';
 import {
-  ImageBackground as _iBgQp9LxA7ZrT,
-  ScrollView as _sCvLmA7ZpQ9r,
-  StyleSheet as _sSyQ9LmAx7PzR,
-  Text as _tXtQp9LxA7ZrT,
-  TouchableOpacity as _tOpQ9LmAx7PzR,
-  useWindowDimensions as _uWdQm9LxA7ZrT,
-  Vibration as _vBrQp9LxA7ZrT,
-  View as _vWQ9LmAx7PzR,
+  ImageBackground,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+  Vibration,
+  View,
 } from 'react-native';
-import { useStore as _uStR8mQpLxA7Z } from '../_0sxRckstrG/Bigrockcnstscntxt';
+import { useNavigation, NavigationProp } from '@react-navigation/native';
+import { useStore } from '../store/Bigrockcnstscntxt';
 
-const _0xBrkKeyQ9LmAx = 'BIGROCK_SAVED_JOKES';
+type JokeRollStory = {
+  id: string;
+  title: string;
+  body: string;
+};
 
-const Bigrockstrsscrn = () => {
-  const _nVQm9LxA7ZrT = _uNavQm9LxA7ZrT2();
-  const { height: _hGtQm9LxA7ZrT } = _uWdQm9LxA7ZrT();
-  const { bigRockVibration: _vibQ9LmAx7P } = _uStR8mQpLxA7Z();
+type RootStackParamListJokeRoll = {
+  Bigrockstrsscrn: undefined;
+  Bigrockstrdtlscrn: { story: JokeRollStory };
+};
 
-  const _sTrQm9LxA7ZrT = _uMmX7pQ9LmAz(
+const Bigrockstrsscrn: React.FC = () => {
+  const navigationJokeRoll =
+    useNavigation<NavigationProp<RootStackParamListJokeRoll>>();
+  const { height: heightJokeRoll } = useWindowDimensions();
+
+  const { bigRockVibration: isEnabledVibrationJokeRoll } = useStore() as {
+    bigRockVibration: boolean;
+  };
+
+  const storiesJokeRoll = useMemo<JokeRollStory[]>(
     () => [
       {
         id: '1',
@@ -172,119 +184,105 @@ And you’re building it.`,
     [],
   );
 
-  const _oPnQm9LxA7ZrT = _sRyQm9LxA7ZrT => {
-    _nVQm9LxA7ZrT.navigate('Bigrockstrdtlscrn', { story: _sRyQm9LxA7ZrT });
+  const openStoryJokeRoll = (storyJokeRoll: JokeRollStory) => {
+    navigationJokeRoll.navigate('Bigrockstrdtlscrn', { story: storyJokeRoll });
   };
 
   return (
-    <_iBgQp9LxA7ZrT
+    <ImageBackground
       source={require('../../assets/images/bigrockbg.png')}
-      style={{ flex: 1 }}
+      style={jokeRollBg}
     >
-      <_sCvLmA7ZpQ9r
-        contentContainerStyle={{ flexGrow: 1 }}
+      <ScrollView
+        contentContainerStyle={jokeRollScrollContent}
         showsVerticalScrollIndicator={false}
         bounces={false}
       >
-        <_vWQ9LmAx7PzR style={_q$.mNvQp9LxA7ZrT}>
-          <_vWQ9LmAx7PzR
+        <View style={jokeRollMainWrap}>
+          <View
             style={[
-              _q$.tPvQm9LxA7ZrT,
+              jokeRollTopWrap,
               {
-                minHeight: _hGtQm9LxA7ZrT * 0.13,
-                paddingTop: _hGtQm9LxA7ZrT * 0.06,
+                minHeight: heightJokeRoll * 0.13,
+                paddingTop: heightJokeRoll * 0.06,
               },
             ]}
           >
-            <_tXtQp9LxA7ZrT style={_q$.tTlQm9LxA7ZrT}>Stories</_tXtQp9LxA7ZrT>
-          </_vWQ9LmAx7PzR>
+            <Text style={jokeRollTopTitle}>Stories</Text>
+          </View>
 
-          <_vWQ9LmAx7PzR style={_q$.lStQm9LxA7ZrT}>
-            {_sTrQm9LxA7ZrT.map(_s$ => (
-              <_tOpQ9LmAx7PzR
-                key={_s$.id}
+          <View style={jokeRollListWrap}>
+            {storiesJokeRoll.map(storyJokeRoll => (
+              <TouchableOpacity
+                key={storyJokeRoll.id}
                 activeOpacity={0.75}
                 onPress={() => {
-                  _oPnQm9LxA7ZrT(_s$);
-                  if (_vibQ9LmAx7P) _vBrQp9LxA7ZrT.vibrate(250);
+                  openStoryJokeRoll(storyJokeRoll);
+                  if (isEnabledVibrationJokeRoll) Vibration.vibrate(250);
                 }}
-                style={_q$.pLlQm9LxA7ZrT}
+                style={jokeRollPillBtn}
               >
-                <_tXtQp9LxA7ZrT style={_q$.pTxQm9LxA7ZrT}>
-                  {_s$.title}
-                </_tXtQp9LxA7ZrT>
-              </_tOpQ9LmAx7PzR>
+                <Text style={jokeRollPillText}>{storyJokeRoll.title}</Text>
+              </TouchableOpacity>
             ))}
-          </_vWQ9LmAx7PzR>
-        </_vWQ9LmAx7PzR>
-      </_sCvLmA7ZpQ9r>
-    </_iBgQp9LxA7ZrT>
+          </View>
+        </View>
+      </ScrollView>
+    </ImageBackground>
   );
 };
 
-const _q$ = _sSyQ9LmAx7PzR.create({
-  tPvQm9LxA7ZrT: {
-    backgroundColor: '#F6BCFF',
-    borderBottomLeftRadius: 30,
-    borderBottomRightRadius: 30,
-    paddingBottom: 18,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  tTlQm9LxA7ZrT: {
-    fontSize: 24,
-    fontWeight: '700',
-    color: '#DA39F2',
-  },
-  lStQm9LxA7ZrT: {
-    flex: 1,
-    paddingTop: 18,
-    paddingBottom: 28,
-    alignItems: 'center',
-    gap: 16,
-  },
-  mNvQp9LxA7ZrT: {
-    flex: 1,
-    paddingBottom: 80,
-  },
-  pLlQm9LxA7ZrT: {
-    minHeight: 64,
-    width: '90%',
-    borderRadius: 999,
-    backgroundColor: '#F6BCFF',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 8,
+/** styles as objects */
+const jokeRollBg = { flex: 1 };
 
-    shadowColor: '#000',
-    shadowOpacity: 0.18,
-    shadowRadius: 10,
-    shadowOffset: { width: 0, height: 6 },
-    elevation: 5,
-  },
-  pTxQm9LxA7ZrT: {
-    color: '#BA0281',
-    fontSize: 20,
-    fontWeight: '600',
-    textAlign: 'center',
-  },
-});
+const jokeRollScrollContent = { flexGrow: 1 };
+
+const jokeRollMainWrap = { flex: 1, paddingBottom: 80 };
+
+const jokeRollTopWrap = {
+  backgroundColor: '#F6BCFF',
+  borderBottomLeftRadius: 30,
+  borderBottomRightRadius: 30,
+  paddingBottom: 18,
+  alignItems: 'center' as const,
+  justifyContent: 'center' as const,
+};
+
+const jokeRollTopTitle = {
+  fontSize: 24,
+  fontWeight: '700' as const,
+  color: '#DA39F2',
+};
+
+const jokeRollListWrap = {
+  flex: 1,
+  paddingTop: 18,
+  paddingBottom: 28,
+  alignItems: 'center' as const,
+  gap: 16,
+};
+
+const jokeRollPillBtn = {
+  minHeight: 64,
+  width: '90%',
+  borderRadius: 999,
+  backgroundColor: '#F6BCFF',
+  alignItems: 'center' as const,
+  justifyContent: 'center' as const,
+  padding: 8,
+
+  shadowColor: '#000',
+  shadowOpacity: 0.18,
+  shadowRadius: 10,
+  shadowOffset: { width: 0, height: 6 },
+  elevation: 5,
+};
+
+const jokeRollPillText = {
+  color: '#BA0281',
+  fontSize: 20,
+  fontWeight: '600' as const,
+  textAlign: 'center' as const,
+};
 
 export default Bigrockstrsscrn;
-
-/*
-  function BigrockStoryDetail({ route }) {
-    const { story } = route.params;
-
-    return (
-      <ImageBackground source={require('../../assets/images/bigrockldrbg.png')} style={{flex:1}}>
-        <ScrollView contentContainerStyle={{padding:20, paddingTop:70}}>
-          <Text style={{fontSize:28, fontWeight:'900', color:'#BA0281', textAlign:'center'}}>{story.title}</Text>
-          <Text style={{marginTop:18, fontSize:18, fontWeight:'500', color:'#BA0281', lineHeight:26}}>
-            {story.body}
-          </Text>
-        </ScrollView>
-      </ImageBackground>
-    );
-  }
-*/

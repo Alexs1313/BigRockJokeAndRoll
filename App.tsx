@@ -1,8 +1,8 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
-import Bigrockstck from './_0sxRcksrC/_0sxRcknvG/Bigrockstck';
-import Bigrockldr from './_0sxRcksrC/_0sxRckscrns/Bigrockldr';
-import { ContextProvider } from './_0sxRcksrC/_0sxRckstrG/Bigrockcnstscntxt';
+import Bigrockstck from './bigRookSrc/navigation/Bigrockstck';
+import Bigrockldr from './bigRookSrc/screens/Bigrockldr';
+import { ContextProvider } from './bigRookSrc/store/Bigrockcnstscntxt';
 
 const App = () => {
   const [isBigRockLoading, setIsBigRockLoading] = useState(true);
