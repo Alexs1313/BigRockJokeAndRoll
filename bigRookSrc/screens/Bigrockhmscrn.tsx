@@ -372,7 +372,6 @@ const JokeRollHomeScreen: React.FC = () => {
   );
 };
 
-/** styles as objects */
 const jokeRollBg = { flex: 1 };
 
 const jokeRollScrollContent = { flexGrow: 1 };
@@ -434,7 +433,7 @@ const jokeRollAnswersGrid = {
 };
 
 const jokeRollAnswerBtn = {
-  width: '48%',
+  width: '44%',
   minHeight: 56,
   borderRadius: 20,
   backgroundColor: '#FFFFFF',
@@ -452,7 +451,7 @@ const jokeRollAnswerBtnActive = {
 };
 
 const jokeRollAnswerText = {
-  fontSize: 15,
+  fontSize: 14,
   fontWeight: '400' as const,
   color: '#DA39F2',
   textAlign: 'center' as const,
