@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Image, ImageBackground, ScrollView, View } from 'react-native';
+import {
+  Image,
+  ImageBackground,
+  Platform,
+  ScrollView,
+  View,
+} from 'react-native';
 import { WebView } from 'react-native-webview';
 import { bigrockldrhtml } from '../constants/bigrockldrhtml';
 
@@ -11,7 +17,7 @@ const Bigrockldr: React.FC = () => {
     const timeoutJokeRoll = setTimeout(() => {
       setShowLoaderJokeRoll(false);
       setShowImageJokeRoll(true);
-    }, 3500);
+    }, 4500);
 
     return () => clearTimeout(timeoutJokeRoll);
   }, []);
@@ -27,11 +33,18 @@ const Bigrockldr: React.FC = () => {
       >
         {showImageJokeRoll && (
           <View style={jokeRollCenter}>
-            <Image
-              source={require('../../assets/images/bigrockldr.png')}
-              style={jokeRollImage}
-              accessibilityLabel="loader-screen"
-            />
+            {Platform.OS === 'ios' ? (
+              <Image
+                source={require('../../assets/images/bigrockldr.png')}
+                style={jokeRollImage}
+              />
+            ) : (
+              <Image
+                source={require('../../assets/images/icon.png')}
+                style={[{ borderRadius: 22, width: 250, height: 250 }]}
+                resizeMode="contain"
+              />
+            )}
           </View>
         )}
 

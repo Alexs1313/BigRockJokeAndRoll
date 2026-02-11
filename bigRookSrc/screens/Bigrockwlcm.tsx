@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import {
   Image,
   ImageBackground,
+  Platform,
   ScrollView,
   Text,
   TouchableOpacity,
@@ -48,10 +49,18 @@ const Bigrockwlcm: React.FC = () => {
             <View
               style={[jokeRollTopBoard, { paddingTop: heightJokeRoll * 0.06 }]}
             >
-              <Image
-                source={require('../../assets/images/bigrocktoplog.png')}
-                style={jokeRollTopLogo}
-              />
+              {Platform.OS === 'ios' ? (
+                <Image
+                  source={require('../../assets/images/bigrocktoplog.png')}
+                  style={jokeRollTopLogo}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/images/intrologo.png')}
+                  style={jokeRollTopLogo}
+                  resizeMode="contain"
+                />
+              )}
 
               <Text style={jokeRollDesc}>
                 {currentIndexJokeRoll === 0
@@ -127,10 +136,18 @@ const Bigrockwlcm: React.FC = () => {
               showsVerticalScrollIndicator={false}
               bounces={false}
             >
-              <Image
-                source={require('../../assets/images/bigrockldr.png')}
-                style={jokeRollFinalImage}
-              />
+              {Platform.OS === 'ios' ? (
+                <Image
+                  source={require('../../assets/images/bigrockldr.png')}
+                  style={jokeRollFinalImage}
+                />
+              ) : (
+                <Image
+                  source={require('../../assets/images/intrologo.png')}
+                  style={jokeRollFinalImage}
+                  resizeMode="contain"
+                />
+              )}
 
               <Text style={jokeRollFinalTitle}>
                 You’re Ready to Joke and Roll
@@ -255,7 +272,7 @@ const jokeRollFinalContent = {
   justifyContent: 'center' as const,
 };
 
-const jokeRollFinalImage = { width: 300, height: 280 };
+const jokeRollFinalImage = { width: 250, height: 150 };
 
 const jokeRollFinalTitle = {
   fontSize: 24,

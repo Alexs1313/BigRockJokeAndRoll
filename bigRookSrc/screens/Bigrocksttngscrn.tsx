@@ -4,6 +4,7 @@ import {
   Image,
   ImageBackground,
   Linking,
+  Platform,
   ScrollView,
   Switch,
   Text,
@@ -92,38 +93,42 @@ const Bigrocksttngscrn: React.FC = () => {
                   thumbColor={'#FFFFFF'}
                 />
               </View>
+              {Platform.OS === 'ios' && (
+                <>
+                  <View style={jokeRollDivider} />
 
-              <View style={jokeRollDivider} />
-
-              <View style={jokeRollRow}>
-                <Text style={jokeRollRowLabel}>Music</Text>
-                <Switch
-                  value={isEnabledSoundJokeRoll}
-                  onValueChange={toggleMusicJokeRoll}
-                  trackColor={{ false: '#CFCFCF', true: '#34C759' }}
-                  thumbColor={'#FFFFFF'}
-                />
-              </View>
+                  <View style={jokeRollRow}>
+                    <Text style={jokeRollRowLabel}>Music</Text>
+                    <Switch
+                      value={isEnabledSoundJokeRoll}
+                      onValueChange={toggleMusicJokeRoll}
+                      trackColor={{ false: '#CFCFCF', true: '#34C759' }}
+                      thumbColor={'#FFFFFF'}
+                    />
+                  </View>
+                </>
+              )}
             </View>
-
-            <View style={jokeRollBottom}>
-              <TouchableOpacity
-                activeOpacity={0.75}
-                onPress={handleShareAppJokeRoll}
-                style={jokeRollShareBorder}
-              >
-                <LinearGradient
-                  colors={['#FD7DFC', '#D42DF0']}
-                  style={jokeRollShareInner}
+            {Platform.OS === 'ios' && (
+              <View style={jokeRollBottom}>
+                <TouchableOpacity
+                  activeOpacity={0.75}
+                  onPress={handleShareAppJokeRoll}
+                  style={jokeRollShareBorder}
                 >
-                  <Text style={jokeRollShareText}>Share the app</Text>
-                  <Image
-                    source={require('../../assets/images/bigrockshric.png')}
-                    style={jokeRollShareIcon}
-                  />
-                </LinearGradient>
-              </TouchableOpacity>
-            </View>
+                  <LinearGradient
+                    colors={['#FD7DFC', '#D42DF0']}
+                    style={jokeRollShareInner}
+                  >
+                    <Text style={jokeRollShareText}>Share the app</Text>
+                    <Image
+                      source={require('../../assets/images/bigrockshric.png')}
+                      style={jokeRollShareIcon}
+                    />
+                  </LinearGradient>
+                </TouchableOpacity>
+              </View>
+            )}
           </View>
         </View>
       </ScrollView>
