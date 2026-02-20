@@ -111,18 +111,20 @@ const BIGROCK_JOKES = {
   ],
 } as const;
 
-type JokeRollCategory = keyof typeof BIGROCK_JOKES;
+type category = keyof typeof BIGROCK_JOKES;
 
 type RootStackParamListJokeRoll = {
-  Bigrockjokesscrn: { category?: JokeRollCategory; categoryTitle?: string };
+  Bigrockjokesscrn: { category?: category; categoryTitle?: string };
 };
 
-const makeJokeIdJokeRoll = (categoryJokeRoll: string, indexJokeRoll: number) =>
-  `${categoryJokeRoll}_${indexJokeRoll}`;
+const makeJokeIdJokeRoll = (
+  categoryJokeRoll: category,
+  indexJokeRoll: number,
+) => `${categoryJokeRoll}_${indexJokeRoll}`;
 
 type SavedJokeJokeRoll = {
   id: string;
-  category: JokeRollCategory;
+  category: category;
   text: string;
   createdAt: number;
 };
@@ -135,8 +137,8 @@ const JokeRollJokesScreen: React.FC = () => {
 
   const { height: heightJokeRoll } = useWindowDimensions();
 
-  const categoryJokeRoll: JokeRollCategory =
-    (routeJokeRoll?.params?.category as JokeRollCategory) || 'everyday';
+  const categoryJokeRoll: category =
+    (routeJokeRoll?.params?.category as category) || 'everyday';
 
   const jokesListJokeRoll = useMemo(() => {
     return BIGROCK_JOKES[categoryJokeRoll] || BIGROCK_JOKES.everyday;
@@ -177,9 +179,9 @@ const JokeRollJokesScreen: React.FC = () => {
     await AsyncStorage.setItem(BIGROCK_SAVED_KEY, JSON.stringify(nextJokeRoll));
   };
 
-  const handleBackJokeRoll = () => navigationJokeRoll.goBack();
+  const goback = () => navigationJokeRoll.goBack();
 
-  const handlePrevJokeRoll = () => {
+  const prev = () => {
     setIndexJokeRoll(
       prevJokeRoll =>
         (prevJokeRoll - 1 + jokesListJokeRoll.length) %
@@ -187,13 +189,13 @@ const JokeRollJokesScreen: React.FC = () => {
     );
   };
 
-  const handleNextJokeRoll = () => {
+  const next = () => {
     setIndexJokeRoll(
       prevJokeRoll => (prevJokeRoll + 1) % jokesListJokeRoll.length,
     );
   };
 
-  const handleToggleSaveJokeRoll = async () => {
+  const toggleSave = async () => {
     if (!currentJokeTextJokeRoll) return;
 
     if (isSavedJokeRoll) {
@@ -217,7 +219,7 @@ const JokeRollJokesScreen: React.FC = () => {
     await persistSavedJokesJokeRoll(nextJokeRoll);
   };
 
-  const handleShareJokeRoll = async () => {
+  const share = async () => {
     await Share.share({ message: currentJokeTextJokeRoll });
   };
 
@@ -240,7 +242,7 @@ const JokeRollJokesScreen: React.FC = () => {
           >
             <TouchableOpacity
               activeOpacity={0.75}
-              onPress={handleBackJokeRoll}
+              onPress={goback}
               style={jokeRollBackBtn}
             >
               <Image source={require('../../assets/images/bigrockback.png')} />
@@ -265,7 +267,7 @@ const JokeRollJokesScreen: React.FC = () => {
             <View style={jokeRollControlsRow}>
               <TouchableOpacity
                 activeOpacity={0.78}
-                onPress={handlePrevJokeRoll}
+                onPress={prev}
                 style={jokeRollControlBtn}
               >
                 <Image source={require('../../assets/images/bigrockrig.png')} />
@@ -273,7 +275,7 @@ const JokeRollJokesScreen: React.FC = () => {
 
               <TouchableOpacity
                 activeOpacity={0.78}
-                onPress={handleToggleSaveJokeRoll}
+                onPress={toggleSave}
                 style={[
                   jokeRollSaveBtn,
                   isSavedJokeRoll && jokeRollSaveBtnActive,
@@ -292,7 +294,7 @@ const JokeRollJokesScreen: React.FC = () => {
 
               <TouchableOpacity
                 activeOpacity={0.78}
-                onPress={handleNextJokeRoll}
+                onPress={next}
                 style={jokeRollControlBtn}
               >
                 <Image
@@ -303,7 +305,7 @@ const JokeRollJokesScreen: React.FC = () => {
 
             <TouchableOpacity
               activeOpacity={0.78}
-              onPress={handleShareJokeRoll}
+              onPress={share}
               style={jokeRollShareBorder}
             >
               <LinearGradient

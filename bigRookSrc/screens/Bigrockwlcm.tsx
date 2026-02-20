@@ -216,7 +216,7 @@ const jokeRollTopBoard = {
   padding: 5,
 };
 
-const jokeRollTopLogo = { width: 190, height: 70 };
+const jokeRollTopLogo = { width: 190, height: 90 };
 
 const jokeRollDesc = {
   marginTop: 20,
@@ -272,7 +272,11 @@ const jokeRollFinalContent = {
   justifyContent: 'center' as const,
 };
 
-const jokeRollFinalImage = { width: 250, height: 150 };
+const jokeRollFinalImage = {
+  width: 250,
+  height: 190,
+  resizeMode: 'contain' as const,
+};
 
 const jokeRollFinalTitle = {
   fontSize: 24,

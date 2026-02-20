@@ -20,17 +20,17 @@ import Sound from 'react-native-sound';
 import { useStore } from '../store/Bigrockcnstscntxt';
 import { ALL_QUESTIONS } from '../data/bigrockquizqst';
 
-const JOKEROLL_QUIZ_KEY = 'BIGROCK_LAST_QUIZ_RESULT';
+const ASYNC_Key = 'BIGROCK_LAST_QUIZ_RESULT';
 
 type RootStackParamListJokeRoll = {
   Bigrockjokesscrn: { category: string; categoryTitle: string };
 };
 
-type JokeRollAnswerKey = 'A' | 'B' | 'C' | 'D';
+type answeroptions = 'A' | 'B' | 'C' | 'D';
 
 type JokeRollQuestion = {
   q: string;
-  a: { key: JokeRollAnswerKey; text: string }[];
+  a: { key: answeroptions; text: string }[];
 };
 
 type JokeRollResult = { id: string; title: string };
@@ -47,9 +47,7 @@ const pick5JokeRoll = <T,>(arr: T[]) => {
   return outJokeRoll;
 };
 
-const mapCategoryJokeRoll = (
-  keyJokeRoll: JokeRollAnswerKey,
-): JokeRollResult => {
+const mapCategoryJokeRoll = (keyJokeRoll: answeroptions): JokeRollResult => {
   if (keyJokeRoll === 'A')
     return { id: 'everyday', title: 'Everyday Life Jokes' };
   if (keyJokeRoll === 'B')
@@ -72,7 +70,7 @@ const JokeRollHomeScreen: React.FC = () => {
 
   const [stepJokeRoll, setStepJokeRoll] = useState<number>(0);
   const [answersJokeRoll, setAnswersJokeRoll] = useState<
-    Record<number, JokeRollAnswerKey>
+    Record<number, answeroptions>
   >({});
 
   const [musicIndexJokeRoll, setMusicIndexJokeRoll] = useState<number>(0);
@@ -203,7 +201,7 @@ const JokeRollHomeScreen: React.FC = () => {
   const currentQuestionJokeRoll = questionsJokeRoll[stepJokeRoll];
   const selectedKeyJokeRoll = answersJokeRoll[stepJokeRoll];
 
-  const pickAnswerJokeRoll = (keyJokeRoll: JokeRollAnswerKey) => {
+  const pickAnswerJokeRoll = (keyJokeRoll: answeroptions) => {
     setAnswersJokeRoll(prevJokeRoll => ({
       ...prevJokeRoll,
       [stepJokeRoll]: keyJokeRoll,
@@ -211,7 +209,7 @@ const JokeRollHomeScreen: React.FC = () => {
   };
 
   const calculateResultJokeRoll = (): JokeRollResult => {
-    const totalsJokeRoll: Record<JokeRollAnswerKey, number> = {
+    const totalsJokeRoll: Record<answeroptions, number> = {
       A: 0,
       B: 0,
       C: 0,
@@ -222,19 +220,19 @@ const JokeRollHomeScreen: React.FC = () => {
       totalsJokeRoll[keyJokeRoll] += 1;
     });
 
-    let winnerJokeRoll: JokeRollAnswerKey = 'A';
+    let winnerJokeRoll: answeroptions = 'A';
     let maxJokeRoll = -1;
 
-    (['A', 'B', 'C', 'D'] as JokeRollAnswerKey[]).forEach(keyJokeRoll => {
+    (['A', 'B', 'C', 'D'] as answeroptions[]).forEach(keyJokeRoll => {
       if (totalsJokeRoll[keyJokeRoll] > maxJokeRoll) {
         maxJokeRoll = totalsJokeRoll[keyJokeRoll];
         winnerJokeRoll = keyJokeRoll;
       }
     });
 
-    const maxKeysJokeRoll = (
-      ['A', 'B', 'C', 'D'] as JokeRollAnswerKey[]
-    ).filter(keyJokeRoll => totalsJokeRoll[keyJokeRoll] === maxJokeRoll);
+    const maxKeysJokeRoll = (['A', 'B', 'C', 'D'] as answeroptions[]).filter(
+      keyJokeRoll => totalsJokeRoll[keyJokeRoll] === maxJokeRoll,
+    );
 
     if (maxKeysJokeRoll.length > 1) {
       const lastAnswerJokeRoll =
@@ -267,7 +265,7 @@ const JokeRollHomeScreen: React.FC = () => {
     const resultJokeRoll = calculateResultJokeRoll();
 
     await AsyncStorage.setItem(
-      JOKEROLL_QUIZ_KEY,
+      ASYNC_Key,
       JSON.stringify({
         result: resultJokeRoll,
         answers: answersJokeRoll,

@@ -75,7 +75,11 @@ const jokeRollCenter = {
   height: 650,
 };
 
-const jokeRollImage = { width: 350, height: 300 };
+const jokeRollImage = {
+  width: 350,
+  height: 300,
+  resizeMode: 'contain' as const,
+};
 
 const jokeRollWebWrap = {
   flex: 1,
