@@ -1,3 +1,12 @@
+// Jokes > Bigrockjokesscrn.tsx
+
+import {
+  useNavigation,
+  useRoute,
+  NavigationProp,
+  RouteProp,
+} from '@react-navigation/native';
+import LinearGradient from 'react-native-linear-gradient';
 import React, { useEffect, useMemo, useState } from 'react';
 import {
   Image,
@@ -10,13 +19,6 @@ import {
   View,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  useNavigation,
-  useRoute,
-  NavigationProp,
-  RouteProp,
-} from '@react-navigation/native';
-import LinearGradient from 'react-native-linear-gradient';
 
 const BIGROCK_SAVED_KEY = 'BIGROCK_SAVED_JOKES';
 
@@ -245,10 +247,12 @@ const JokeRollJokesScreen: React.FC = () => {
               onPress={goback}
               style={jokeRollBackBtn}
             >
-              <Image source={require('../../assets/images/bigrockback.png')} />
+              <Image
+                source={require('../../assets/images/bigjokelsback.png')}
+              />
             </TouchableOpacity>
 
-            <Text style={jokeRollTopTitle}>Main menu</Text>
+            <Text style={jokeRollTopTitle}>Show</Text>
           </View>
 
           <View style={jokeRollCenter}>
@@ -283,7 +287,7 @@ const JokeRollJokesScreen: React.FC = () => {
               >
                 {isSavedJokeRoll ? (
                   <Image
-                    source={require('../../assets/images/bigrocksaved.png')}
+                    source={require('../../assets/images/bigrocksave.png')}
                   />
                 ) : (
                   <Image
@@ -333,7 +337,7 @@ const jokeRollScrollContent = { flexGrow: 1 };
 const jokeRollMainWrap = { flex: 1, paddingBottom: 30 };
 
 const jokeRollTopWrap = {
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#2A0030',
   paddingBottom: 18,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
@@ -342,7 +346,7 @@ const jokeRollTopWrap = {
 const jokeRollTopTitle = {
   fontSize: 24,
   fontWeight: '700' as const,
-  color: '#DA39F2',
+  color: '#fff',
 };
 
 const jokeRollBackBtn = {
@@ -352,9 +356,9 @@ const jokeRollBackBtn = {
   width: 70,
   height: 70,
   borderRadius: 20,
-  backgroundColor: '#FFFFFF',
+  backgroundColor: '#DA39F2',
   borderWidth: 5,
-  borderColor: '#DA39F2',
+  borderColor: '#fff',
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
 };
@@ -370,7 +374,7 @@ const jokeRollHeader = {
   marginTop: 6,
   fontSize: 32,
   fontWeight: '900' as const,
-  color: '#FFFFFF',
+  color: '#fff',
   textAlign: 'center' as const,
   textShadowColor: '#BA0281',
   textShadowOffset: { width: 0, height: 3 },
@@ -390,7 +394,7 @@ const jokeRollJokeCard = {
   flex: 1,
   minHeight: 120,
   borderRadius: 30,
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#671074',
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
   paddingHorizontal: 20,
@@ -398,7 +402,7 @@ const jokeRollJokeCard = {
 };
 
 const jokeRollJokeText = {
-  color: '#BA0281',
+  color: '#fff',
   fontSize: 20,
   fontWeight: '500' as const,
   textAlign: 'center' as const,
@@ -436,8 +440,8 @@ const jokeRollSaveBtn = {
 };
 
 const jokeRollSaveBtnActive = {
-  borderColor: '#DA39F2',
-  backgroundColor: '#fff',
+  borderColor: '#fff',
+  backgroundColor: '#671074',
 };
 
 const jokeRollShareBorder = {

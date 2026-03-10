@@ -1,4 +1,5 @@
-import React from 'react';
+// Stories > Bigrockstrdtlscrn.tsx
+
 import {
   Image,
   ImageBackground,
@@ -15,6 +16,7 @@ import {
   NavigationProp,
   RouteProp,
 } from '@react-navigation/native';
+import React from 'react';
 
 type JokeRollStory = {
   title: string;
@@ -63,7 +65,7 @@ const Bigrockstrdtlscrn: React.FC = () => {
             onPress={handleBackJokeRoll}
             style={jokeRollBackBtn}
           >
-            <Image source={require('../../assets/images/bigrockback.png')} />
+            <Image source={require('../../assets/images/bigjokelsback.png')} />
           </TouchableOpacity>
 
           <Text style={jokeRollTopTitle}>Stories</Text>
@@ -103,7 +105,7 @@ const jokeRollBg = { flex: 1 };
 const jokeRollFull = { flex: 1 };
 
 const jokeRollTopWrap = {
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#2A0030',
   paddingBottom: 18,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
@@ -112,7 +114,7 @@ const jokeRollTopWrap = {
 const jokeRollTopTitle = {
   fontSize: 24,
   fontWeight: '700' as const,
-  color: '#DA39F2',
+  color: '#fff',
 };
 
 const jokeRollBackBtn = {
@@ -122,9 +124,9 @@ const jokeRollBackBtn = {
   width: 70,
   height: 70,
   borderRadius: 20,
-  backgroundColor: '#FFFFFF',
+  backgroundColor: '#DA39F2',
   borderWidth: 5,
-  borderColor: '#DA39F2',
+  borderColor: '#FFFFFF',
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
 };
@@ -136,7 +138,7 @@ const jokeRollScrollContent = {
 
 const jokeRollCard = {
   width: '100%',
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#671074',
   borderRadius: 30,
   paddingHorizontal: 18,
   paddingVertical: 18,
@@ -151,7 +153,7 @@ const jokeRollCard = {
 const jokeRollStoryTitle = {
   fontSize: 16,
   fontWeight: '600' as const,
-  color: '#BA0281',
+  color: '#fff',
   textAlign: 'center' as const,
   marginBottom: 14,
 };
@@ -159,7 +161,7 @@ const jokeRollStoryTitle = {
 const jokeRollStoryBody = {
   fontSize: 16,
   fontWeight: '300' as const,
-  color: '#BA0281',
+  color: '#fff',
   textAlign: 'center' as const,
   lineHeight: 24,
 };

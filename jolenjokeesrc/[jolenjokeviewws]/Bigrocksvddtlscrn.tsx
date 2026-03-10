@@ -144,7 +144,7 @@ const Bigrocksvddtlscrn: React.FC = () => {
             onPress={handleBackJokeRoll}
             style={jokeRollBackBtn}
           >
-            <Image source={require('../../assets/images/bigrockback.png')} />
+            <Image source={require('../../assets/images/bigjokelsback.png')} />
           </TouchableOpacity>
 
           <Text style={jokeRollTopTitle}>Saved</Text>
@@ -225,7 +225,7 @@ const jokeRollBg = { flex: 1 };
 const jokeRollFull = { flex: 1 };
 
 const jokeRollTopWrap = {
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#2A0030',
   paddingBottom: 18,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
@@ -234,7 +234,7 @@ const jokeRollTopWrap = {
 const jokeRollTopTitle = {
   fontSize: 24,
   fontWeight: '700' as const,
-  color: '#DA39F2',
+  color: '#fff',
 };
 
 const jokeRollBackBtn = {
@@ -244,9 +244,9 @@ const jokeRollBackBtn = {
   width: 70,
   height: 70,
   borderRadius: 20,
-  backgroundColor: '#FFFFFF',
+  backgroundColor: '#DA39F2',
   borderWidth: 5,
-  borderColor: '#DA39F2',
+  borderColor: '#fff',
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
 };
@@ -258,7 +258,7 @@ const jokeRollScrollPad = {
 
 const jokeRollCard = {
   width: '90%',
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#671074',
   borderRadius: 30,
   paddingHorizontal: 18,
   paddingVertical: 18,
@@ -275,7 +275,7 @@ const jokeRollCard = {
 const jokeRollCardText = {
   fontSize: 20,
   fontWeight: '500' as const,
-  color: '#BA0281',
+  color: '#fff',
   textAlign: 'center' as const,
   lineHeight: 24,
 };
@@ -310,7 +310,7 @@ const jokeRollRemoveBtn = {
   flex: 1,
   height: 70,
   borderRadius: 22,
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#671074',
   borderWidth: 5,
   borderColor: '#DA39F2',
   alignItems: 'center' as const,

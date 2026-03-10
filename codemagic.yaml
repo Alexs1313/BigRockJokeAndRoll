@@ -1,19 +1,19 @@
 workflows:
   ios-workflow:
-    name: 'Big Rook Joke and Roll'
+    name: 'BigRook: Joke and Boss'
     max_build_duration: 120
     instance_type: mac_mini_m2
     integrations:
-      app_store_connect: BlgRookJokeAndBas
+      app_store_connect: BigRookJokeBossAPIKey
     environment:
       ios_signing:
         distribution_type: app_store
-        bundle_identifier: com.BlgRookJokeAndBas
+        bundle_identifier: com.jokenroll.bdkfkla.auieqp
       vars:
-        BUNDLE_ID: com.BlgRookJokeAndBas
+        BUNDLE_ID: com.jokenroll.bdkfkla.auieqp
         XCODE_WORKSPACE: BigRockJokeAndRoll.xcworkspace
         XCODE_SCHEME: BigRockJokeAndRoll
-        APP_STORE_APPLE_ID: 6758626360
+        APP_STORE_APPLE_ID: 6760354731
     scripts:
       - name: Install npm dependencies
         script: |
@@ -43,4 +43,4 @@ workflows:
       app_store_connect:
         auth: integration
         submit_to_app_store: true
-        copyright: 'Big Rook Joke and Roll 2026'
+        copyright: 'BigRook: Joke and Boss 2026'

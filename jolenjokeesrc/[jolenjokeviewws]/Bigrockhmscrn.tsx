@@ -1,3 +1,7 @@
+// Home > Bigrockhmscrn.tsx
+
+import LinearGradient from 'react-native-linear-gradient';
+import Sound from 'react-native-sound';
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   ImageBackground,
@@ -14,11 +18,9 @@ import {
   useNavigation,
   NavigationProp,
 } from '@react-navigation/native';
-import LinearGradient from 'react-native-linear-gradient';
-import Sound from 'react-native-sound';
 
-import { useStore } from '../store/Bigrockcnstscntxt';
-import { ALL_QUESTIONS } from '../data/bigrockquizqst';
+import { useStore } from '../jolenjokeestorr/Bigrockcnstscntxt';
+import { ALL_QUESTIONS } from '../../bigrockquizqst';
 
 const ASYNC_Key = 'BIGROCK_LAST_QUIZ_RESULT';
 
@@ -301,7 +303,7 @@ const JokeRollHomeScreen: React.FC = () => {
               { minHeight: 130, paddingTop: heightJokeRoll * 0.06 },
             ]}
           >
-            <Text style={jokeRollTopTitle}>Main menu</Text>
+            <Text style={jokeRollTopTitle}>Show</Text>
           </View>
 
           <View style={jokeRollCenter}>
@@ -342,7 +344,7 @@ const JokeRollHomeScreen: React.FC = () => {
             </View>
 
             <View
-              style={[jokeRollNextWrap, { marginTop: heightJokeRoll * 0.1 }]}
+              style={[jokeRollNextWrap, { marginTop: heightJokeRoll * 0.01 }]}
             >
               <TouchableOpacity
                 activeOpacity={0.8}
@@ -354,7 +356,7 @@ const JokeRollHomeScreen: React.FC = () => {
                 ]}
               >
                 <LinearGradient
-                  colors={['#FFFFFF', '#FFFFFF']}
+                  colors={['#DA39F2', '#DA39F2']}
                   style={jokeRollNextInner}
                 >
                   <Text style={jokeRollNextText}>
@@ -377,7 +379,7 @@ const jokeRollScrollContent = { flexGrow: 1 };
 const jokeRollMainWrap = { flex: 1, paddingBottom: 90 };
 
 const jokeRollTopWrap = {
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#2A0030',
   paddingBottom: 18,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
@@ -386,7 +388,7 @@ const jokeRollTopWrap = {
 const jokeRollTopTitle = {
   fontSize: 24,
   fontWeight: '700' as const,
-  color: '#DA39F2',
+  color: '#fff',
 };
 
 const jokeRollCenter = {
@@ -394,6 +396,7 @@ const jokeRollCenter = {
   alignItems: 'center' as const,
   paddingTop: 9,
   paddingHorizontal: 18,
+  marginTop: 20,
 };
 
 const jokeRollStep = {
@@ -405,7 +408,7 @@ const jokeRollStep = {
 
 const jokeRollCard = {
   width: '90%',
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#671074',
   borderRadius: 30,
   paddingVertical: 20,
   paddingHorizontal: 18,
@@ -414,12 +417,11 @@ const jokeRollCard = {
 };
 
 const jokeRollQuestion = {
-  fontSize: 20,
+  fontSize: 18,
   fontWeight: '500' as const,
-  color: '#BA0281',
+  color: '#fff',
   textAlign: 'center' as const,
   marginBottom: 28,
-  lineHeight: 32,
 };
 
 const jokeRollAnswersGrid = {
@@ -431,31 +433,27 @@ const jokeRollAnswersGrid = {
 };
 
 const jokeRollAnswerBtn = {
-  width: '44%',
+  width: '100%',
   minHeight: 56,
   borderRadius: 20,
-  backgroundColor: '#FFFFFF',
+  backgroundColor: '#DA39F2',
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
-  paddingHorizontal: 10,
-  borderWidth: 3,
-  borderColor: '#FFFFFF',
-  paddingVertical: 4,
 };
 
 const jokeRollAnswerBtnActive = {
-  borderColor: '#DA39F2',
-  borderWidth: 5,
+  borderWidth: 3,
+  borderColor: '#FFFFFF',
 };
 
 const jokeRollAnswerText = {
   fontSize: 14,
   fontWeight: '400' as const,
-  color: '#DA39F2',
+  color: '#fff',
   textAlign: 'center' as const,
 };
 
-const jokeRollAnswerTextActive = { color: '#BA0281' };
+const jokeRollAnswerTextActive = { color: '#fff' };
 
 const jokeRollNextWrap = {
   alignItems: 'center' as const,
@@ -464,8 +462,8 @@ const jokeRollNextWrap = {
 const jokeRollNextBorder = {
   marginTop: 18,
   width: 236,
-  borderWidth: 5,
-  borderColor: '#DA39F2',
+  borderWidth: 4,
+  borderColor: '#fff',
   borderRadius: 20,
 };
 
@@ -477,7 +475,7 @@ const jokeRollNextInner = {
 };
 
 const jokeRollNextText = {
-  color: '#DA39F2',
+  color: '#fff',
   fontSize: 20,
   fontWeight: '700' as const,
 };

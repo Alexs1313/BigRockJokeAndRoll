@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
-import { useStore } from '../store/Bigrockcnstscntxt';
+import { useStore } from '../jolenjokeestorr/Bigrockcnstscntxt';
 
 type JokeRollStory = {
   id: string;
@@ -240,7 +240,7 @@ const jokeRollScrollContent = { flexGrow: 1 };
 const jokeRollMainWrap = { flex: 1, paddingBottom: 80 };
 
 const jokeRollTopWrap = {
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#2A0030',
   borderBottomLeftRadius: 30,
   borderBottomRightRadius: 30,
   paddingBottom: 18,
@@ -251,7 +251,7 @@ const jokeRollTopWrap = {
 const jokeRollTopTitle = {
   fontSize: 24,
   fontWeight: '700' as const,
-  color: '#DA39F2',
+  color: '#fff',
 };
 
 const jokeRollListWrap = {
@@ -266,7 +266,7 @@ const jokeRollPillBtn = {
   minHeight: 64,
   width: '90%',
   borderRadius: 999,
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#671074',
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
   padding: 8,
@@ -279,9 +279,9 @@ const jokeRollPillBtn = {
 };
 
 const jokeRollPillText = {
-  color: '#BA0281',
-  fontSize: 20,
-  fontWeight: '600' as const,
+  color: '#fff',
+  fontSize: 18,
+  fontWeight: '500' as const,
   textAlign: 'center' as const,
 };
 

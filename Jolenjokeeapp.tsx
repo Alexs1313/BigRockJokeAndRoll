@@ -1,10 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
-import Bigrockstck from './bigRookSrc/navigation/Bigrockstck';
-import Bigrockldr from './bigRookSrc/screens/Bigrockldr';
-import { ContextProvider } from './bigRookSrc/store/Bigrockcnstscntxt';
+import Bigrockstck from './jolenjokeesrc/jolenjokeroutter/Bigrockstck';
+import Bigrockldr from './jolenjokeesrc/[jolenjokeviewws]/Bigrockldr';
+import { ContextProvider } from './jolenjokeesrc/jolenjokeestorr/Bigrockcnstscntxt';
 
-const App = () => {
+const Jolenjokeeapp = () => {
   const [isBigRockLoading, setIsBigRockLoading] = useState(true);
 
   useEffect(() => {
@@ -22,4 +22,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Jolenjokeeapp;

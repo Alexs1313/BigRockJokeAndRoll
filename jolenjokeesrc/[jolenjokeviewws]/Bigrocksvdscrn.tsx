@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
+  Image,
   ImageBackground,
   ScrollView,
   Text,
@@ -84,7 +85,11 @@ const Bigrocksvdscrn: React.FC = () => {
 
           <View style={jokeRollListWrap}>
             {savedJokesJokeRoll.length === 0 ? (
-              <Text style={jokeRollEmptyText}>No saved jokes yet.</Text>
+              <>
+                <Text style={jokeRollEmptyText}>
+                  You don't have any saved stories yet.
+                </Text>
+              </>
             ) : (
               savedJokesJokeRoll.map((itemJokeRoll, indexJokeRoll) => (
                 <TouchableOpacity
@@ -99,6 +104,13 @@ const Bigrocksvdscrn: React.FC = () => {
             )}
           </View>
         </View>
+
+        {savedJokesJokeRoll.length === 0 && (
+          <Image
+            source={require('../../assets/images/bigjokelemptyjokes.png')}
+            style={{}}
+          />
+        )}
       </ScrollView>
     </ImageBackground>
   );
@@ -112,16 +124,18 @@ const jokeRollScrollContent = { flexGrow: 1 };
 const jokeRollMainWrap = { flex: 1, paddingBottom: 110 };
 
 const jokeRollTopWrap = {
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#2A0030',
   paddingBottom: 18,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
+  borderBottomLeftRadius: 30,
+  borderBottomRightRadius: 30,
 };
 
 const jokeRollTopTitle = {
   fontSize: 24,
   fontWeight: '700' as const,
-  color: '#DA39F2',
+  color: '#fff',
 };
 
 const jokeRollListWrap = {
@@ -135,7 +149,7 @@ const jokeRollListWrap = {
 const jokeRollPill = {
   width: '90%',
   borderRadius: 40,
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#671074',
   paddingVertical: 20,
   paddingHorizontal: 18,
   alignItems: 'center' as const,
@@ -143,7 +157,7 @@ const jokeRollPill = {
 };
 
 const jokeRollPillText = {
-  color: '#BA0281',
+  color: '#fff',
   fontSize: 22,
   fontWeight: '800' as const,
   textAlign: 'center' as const,
@@ -152,10 +166,10 @@ const jokeRollPillText = {
 
 const jokeRollEmptyText = {
   marginTop: 60,
-  width: '86%',
+  width: '70%',
   textAlign: 'center' as const,
   color: '#FFFFFF',
-  fontSize: 18,
+  fontSize: 24,
   fontWeight: '700' as const,
 };
 

@@ -1,3 +1,7 @@
+// Settings > Bigrocksttngscrn.tsx
+
+import LinearGradient from 'react-native-linear-gradient';
+import { useStore } from '../jolenjokeestorr/Bigrockcnstscntxt';
 import React from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -13,11 +17,13 @@ import {
   Vibration,
   View,
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
-import { useStore } from '../store/Bigrockcnstscntxt';
+import { useNavigation } from '@react-navigation/native';
 
 const Bigrocksttngscrn: React.FC = () => {
+  const navigation = useNavigation();
   const { height: heightJokeRoll } = useWindowDimensions();
+
+  const handleBackJokeRoll = () => navigation.goBack();
 
   const {
     bigRockBgMusic: isEnabledSoundJokeRoll,
@@ -58,7 +64,7 @@ const Bigrocksttngscrn: React.FC = () => {
 
   const handleShareAppJokeRoll = async () => {
     Linking.openURL(
-      'https://apps.apple.com/us/app/%D0%B2lgr%D0%BE%D0%BEk-j0k%D0%B7-%D0%B0nd-b%D0%B0s%D0%B5/id6758626360',
+      'https://apps.apple.com/us/app/bigrook-joke-and-boss/id6760354731',
     );
   };
 
@@ -79,7 +85,17 @@ const Bigrocksttngscrn: React.FC = () => {
               { minHeight: 130, paddingTop: heightJokeRoll * 0.06 },
             ]}
           >
-            <Text style={jokeRollTitle}>Settings</Text>
+            <TouchableOpacity
+              activeOpacity={0.75}
+              onPress={handleBackJokeRoll}
+              style={jokeRollBackBtn}
+            >
+              <Image
+                source={require('../../assets/images/bigjokelsback.png')}
+              />
+            </TouchableOpacity>
+
+            <Text style={jokeRollTopTitle}>Settings</Text>
           </View>
 
           <View style={jokeRollContent}>
@@ -89,8 +105,9 @@ const Bigrocksttngscrn: React.FC = () => {
                 <Switch
                   value={isEnabledVibrationJokeRoll}
                   onValueChange={toggleVibrationJokeRoll}
-                  trackColor={{ false: '#CFCFCF', true: '#34C759' }}
-                  thumbColor={'#FFFFFF'}
+                  trackColor={{ false: '#CCCCCC', true: '#34C759' }}
+                  thumbColor={'#DA39F2'}
+                  ios_backgroundColor={'#CCCCCC'}
                 />
               </View>
               {Platform.OS === 'ios' && (
@@ -102,8 +119,9 @@ const Bigrocksttngscrn: React.FC = () => {
                     <Switch
                       value={isEnabledSoundJokeRoll}
                       onValueChange={toggleMusicJokeRoll}
-                      trackColor={{ false: '#CFCFCF', true: '#34C759' }}
-                      thumbColor={'#FFFFFF'}
+                      trackColor={{ false: '#CCCCCC', true: '#34C759' }}
+                      thumbColor={'#DA39F2'}
+                      ios_backgroundColor={'#CCCCCC'}
                     />
                   </View>
                 </>
@@ -144,16 +162,30 @@ const jokeRollScrollContent = { flexGrow: 1 };
 const jokeRollFull = { flex: 1 };
 
 const jokeRollTopWrap = {
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#2A0030',
   paddingBottom: 18,
   alignItems: 'center' as const,
   justifyContent: 'center' as const,
 };
 
-const jokeRollTitle = {
+const jokeRollTopTitle = {
   fontSize: 24,
   fontWeight: '700' as const,
   color: '#DA39F2',
+};
+
+const jokeRollBackBtn = {
+  position: 'absolute' as const,
+  left: 18,
+  bottom: 14,
+  width: 70,
+  height: 70,
+  borderRadius: 20,
+  backgroundColor: '#DA39F2',
+  borderWidth: 5,
+  borderColor: '#fff',
+  alignItems: 'center' as const,
+  justifyContent: 'center' as const,
 };
 
 const jokeRollContent = {
@@ -164,7 +196,7 @@ const jokeRollContent = {
 
 const jokeRollCard = {
   width: '100%',
-  backgroundColor: '#F6BCFF',
+  backgroundColor: '#671074',
   borderRadius: 30,
   paddingVertical: 16,
   paddingHorizontal: 18,
@@ -181,12 +213,12 @@ const jokeRollRow = {
 const jokeRollRowLabel = {
   fontSize: 20,
   fontWeight: '400' as const,
-  color: '#BA0281',
+  color: '#fff',
 };
 
 const jokeRollDivider = {
   height: 1,
-  backgroundColor: '#BA0281',
+  backgroundColor: '#fff',
   marginVertical: 8,
 };
 

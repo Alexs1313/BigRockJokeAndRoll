@@ -29,7 +29,7 @@ const Bigrockwlcm: React.FC = () => {
       return;
     }
 
-    navigationJokeRoll.replace('Bigrocktbs');
+    navigationJokeRoll.replace('JolenjokBottmTabs');
   };
 
   const isLastScreenJokeRoll = currentIndexJokeRoll >= 3;
@@ -49,19 +49,6 @@ const Bigrockwlcm: React.FC = () => {
             <View
               style={[jokeRollTopBoard, { paddingTop: heightJokeRoll * 0.06 }]}
             >
-              {Platform.OS === 'ios' ? (
-                <Image
-                  source={require('../../assets/images/bigrocktoplog.png')}
-                  style={jokeRollTopLogo}
-                />
-              ) : (
-                <Image
-                  source={require('../../assets/images/intrologo.png')}
-                  style={jokeRollTopLogo}
-                  resizeMode="contain"
-                />
-              )}
-
               <Text style={jokeRollDesc}>
                 {currentIndexJokeRoll === 0
                   ? `Discover jokes that actually fit your vibe. A few questions — and you’re ready to rock the laughs.`
@@ -100,10 +87,10 @@ const Bigrockwlcm: React.FC = () => {
             <Image
               source={
                 currentIndexJokeRoll === 0
-                  ? require('../../assets/images/bigrockon1.png')
+                  ? require('../../assets/images/bigrockon3.png')
                   : currentIndexJokeRoll === 1
                   ? require('../../assets/images/bigrockon2.png')
-                  : require('../../assets/images/bigrockon3.png')
+                  : require('../../assets/images/bigrockon1.png')
               }
               style={jokeRollBottomHero}
             />
@@ -130,57 +117,60 @@ const Bigrockwlcm: React.FC = () => {
             </View>
           </View>
         ) : (
-          <View style={jokeRollFinalWrap}>
+          <ImageBackground
+            source={require('../../assets/images/bigrockldrbg.png')}
+            style={jokeRollBg}
+          >
             <ScrollView
               contentContainerStyle={jokeRollFinalContent}
               showsVerticalScrollIndicator={false}
               bounces={false}
             >
-              {Platform.OS === 'ios' ? (
-                <Image
-                  source={require('../../assets/images/bigrockldr.png')}
-                  style={jokeRollFinalImage}
-                />
-              ) : (
-                <Image
-                  source={require('../../assets/images/intrologo.png')}
-                  style={jokeRollFinalImage}
-                  resizeMode="contain"
-                />
-              )}
+              <View style={jokeRollFinalWrap}>
+                {Platform.OS === 'ios' ? (
+                  <Image
+                    source={require('../../assets/images/bigjokeloaderic.png')}
+                    style={jokeRollFinalImage}
+                  />
+                ) : (
+                  <Image
+                    source={require('../../assets/images/intrologo.png')}
+                    style={jokeRollFinalImage}
+                    resizeMode="contain"
+                  />
+                )}
 
-              <Text style={jokeRollFinalTitle}>
-                You’re Ready to Joke and Roll
-              </Text>
+                <Text style={jokeRollFinalTitle}>
+                  You’re Ready to Joke and Roll
+                </Text>
 
-              <Text style={jokeRollFinalSub}>
-                Explore jokes, boost your confidence, and enjoy comedy made just
-                for you.
-              </Text>
-
+                <Text style={jokeRollFinalSub}>
+                  Explore jokes, boost your confidence, and enjoy comedy made
+                  just for you.
+                </Text>
+              </View>
               <View
-                style={[
-                  jokeRollFinalBtnWrap,
-                  { marginTop: heightJokeRoll * 0.12 },
-                ]}
+                style={{
+                  flex: 1,
+                  justifyContent: 'flex-end',
+                  marginBottom: 45,
+                }}
               >
                 <TouchableOpacity
-                  style={[jokeRollCtaBorder, { borderColor: '#DA39F2' }]}
-                  activeOpacity={0.7}
+                  style={jokeRollCtaBorder}
+                  activeOpacity={0.72}
                   onPress={handleNextJokeRoll}
                 >
                   <LinearGradient
-                    colors={['#fff', '#fff']}
+                    colors={['#FD7DFC', '#D42DF0']}
                     style={jokeRollCtaInner}
                   >
-                    <Text style={[jokeRollCtaText, { color: '#BA0281' }]}>
-                      Let’s Rock
-                    </Text>
+                    <Text style={jokeRollCtaText}>Let’s Rock</Text>
                   </LinearGradient>
                 </TouchableOpacity>
               </View>
             </ScrollView>
-          </View>
+          </ImageBackground>
         )}
       </ScrollView>
     </ImageBackground>
@@ -199,32 +189,35 @@ const jokeRollMain = {
 };
 
 const jokeRollFinalWrap = {
-  flex: 1,
   justifyContent: 'center' as const,
   alignItems: 'center' as const,
-  backgroundColor: '#F6BCFF',
-  paddingBottom: 45,
+  backgroundColor: '#2A0030',
+  padding: 45,
+  borderBottomLeftRadius: 30,
+  borderBottomRightRadius: 30,
+  minHeight: '70%',
 };
 
 const jokeRollTopBoard = {
   justifyContent: 'center' as const,
   alignItems: 'center' as const,
-  minHeight: 300,
-  backgroundColor: '#F6BCFF',
+  minHeight: 250,
+  backgroundColor: '#2A0030',
   borderBottomLeftRadius: 30,
   borderBottomRightRadius: 30,
   padding: 5,
 };
 
-const jokeRollTopLogo = { width: 190, height: 90 };
-
 const jokeRollDesc = {
-  marginTop: 20,
   fontSize: 20,
-  color: '#BA0281',
+  color: '#fff',
   textAlign: 'center' as const,
   marginHorizontal: 30,
-  fontWeight: '500' as const,
+  fontWeight: '400' as const,
+  lineHeight: 26,
+  paddingHorizontal: 20,
+  marginTop: 20,
+  marginBottom: 10,
 };
 
 const jokeRollMiniImagesRow = { flexDirection: 'row' as const, marginTop: 50 };
@@ -268,8 +261,6 @@ const jokeRollCtaText = {
 
 const jokeRollFinalContent = {
   flexGrow: 1,
-  alignItems: 'center' as const,
-  justifyContent: 'center' as const,
 };
 
 const jokeRollFinalImage = {
@@ -280,7 +271,7 @@ const jokeRollFinalImage = {
 
 const jokeRollFinalTitle = {
   fontSize: 24,
-  color: '#BA0281',
+  color: '#fff',
   fontWeight: '900' as const,
   marginTop: 20,
   textAlign: 'center' as const,
@@ -289,13 +280,11 @@ const jokeRollFinalTitle = {
 
 const jokeRollFinalSub = {
   fontSize: 20,
-  color: '#BA0281',
+  color: '#fff',
   fontWeight: '500' as const,
   marginTop: 30,
   textAlign: 'center' as const,
   marginHorizontal: 40,
 };
-
-const jokeRollFinalBtnWrap = {};
 
 export default Bigrockwlcm;
