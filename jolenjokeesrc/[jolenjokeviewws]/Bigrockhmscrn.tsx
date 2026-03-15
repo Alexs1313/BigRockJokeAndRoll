@@ -396,7 +396,7 @@ const jokeRollCenter = {
   alignItems: 'center' as const,
   paddingTop: 9,
   paddingHorizontal: 18,
-  marginTop: 20,
+  marginTop: 21,
 };
 
 const jokeRollStep = {
